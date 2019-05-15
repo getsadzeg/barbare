@@ -1,7 +1,7 @@
 package data.dao;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -14,9 +14,12 @@ public interface UserDAO {
     void addUser(UserEntry user);
 
     @Query("SELECT * FROM user WHERE username=:username")
-    LiveData<UserEntry> loadUserStats(String username);
+    UserEntry loadUserStats(String username); ////wrap it up with LiveData(?)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUserStats(UserEntry user);
+
+    @Delete
+    void deleteUser(UserEntry user);
 
 }

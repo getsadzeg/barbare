@@ -17,7 +17,7 @@ public class UserEntry {
 
     }
 
-    public UserEntry(@NonNull  String username, int points, int level) {
+    public UserEntry(@NonNull String username, int points, int level) {
         this.username = username;
         this.points = points;
         this.level = level;
