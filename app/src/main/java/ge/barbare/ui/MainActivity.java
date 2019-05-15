@@ -1,13 +1,29 @@
-package ge.barbare;
+package ge.barbare.ui;
+
+import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import data.AppDatabase;
+import data.DatabaseCopier;
+import data.model.WordEntry;
+import ge.barbare.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private AppDatabase mDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DatabaseCopier copier = DatabaseCopier.getInstance(getApplicationContext());
+        mDb = copier.getRoomDatabase();
+        //System.out.println(mDb.wordsDAO().getEntry(2).getValue().getBarb());
+        WordEntry wordEntry;
+        wordEntry = mDb.wordsDAO().getEntry(2);
+        Log.i(TAG, wordEntry.getBarb());
     }
 }
