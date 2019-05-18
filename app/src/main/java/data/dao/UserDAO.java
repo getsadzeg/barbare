@@ -14,12 +14,12 @@ public interface UserDAO {
     void addUser(UserEntry user);
 
     @Query("SELECT * FROM user WHERE username=:username")
-    UserEntry loadUserStats(String username); ////wrap it up with LiveData(?)
+    UserEntry loadUserStats(String username); //wrap it up with LiveData(?)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUserStats(UserEntry user);
 
     @Delete
-    void deleteUser(UserEntry user);
+    void deleteUser(UserEntry user); //may remove this in the future
 
 }
